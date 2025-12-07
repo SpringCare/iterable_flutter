@@ -43,7 +43,7 @@ android {
     }
     defaultConfig {
         compileSdk 34
-        minSdkVersion 16
+        minSdkVersion 21
     }
 
     testOptions {
@@ -54,7 +54,7 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'com.iterable:iterableapi:3.5.1'
+    implementation 'com.iterable:iterableapi:3.6.3'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.json:json:20231013'
 }
