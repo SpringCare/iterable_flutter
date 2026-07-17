@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'La Haus' => 'email@example.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'iterable_flutter/Sources/iterable_flutter/**/*'
   s.dependency 'Flutter'
   s.dependency 'Iterable-iOS-SDK', '6.7.3'
   s.platform = :ios, '13.0'
