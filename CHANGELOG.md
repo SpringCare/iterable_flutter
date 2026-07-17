@@ -1,3 +1,9 @@
+## 0.8.0
+- feat: add Swift Package Manager support alongside CocoaPods. NB: for SPM identity resolution to work, the plugin repository must be named `iterable_flutter` (underscore) to match the Dart package name.
+- chore: bump Iterable iOS SDK 6.6.4 → 6.7.3 and Iterable Android SDK 3.6.3 → 3.9.0
+- refactor: restructure iOS sources to the SPM layout as a Swift-only target (dropped the Objective-C forwarding shim)
+- build: modernise the example app for Flutter 3.44 (Gradle 8.9 / AGP 8.7.3; replaced abandoned flutter_config with flutter_dotenv)
+
 ## 0.5.9
 - Update README with no longer maintaining message
 

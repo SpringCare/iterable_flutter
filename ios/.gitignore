@@ -9,6 +9,10 @@ profile
 
 DerivedData/
 build/
+
+# Swift Package Manager
+.build/
+.swiftpm/
 GeneratedPluginRegistrant.h
 GeneratedPluginRegistrant.m
 

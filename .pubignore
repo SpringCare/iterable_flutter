@@ -30,8 +30,6 @@ ios/Podfile.lock
 # Intl generated
 lib/generated/
 
-## https://pub.dev/packages/flutter_config
-ios/.envfile
 **/ios/Flutter/tmp.xcconfig
 
 # Miscellaneous

@@ -2,13 +2,13 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_config/flutter_config.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:iterable_flutter/iterable_flutter.dart';
 import 'package:iterable_flutter_example/second_page.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
-  await FlutterConfig.loadEnvVariables();
+  WidgetsFlutterBinding.ensureInitialized(); // Required before loading .env
+  await dotenv.load();
 
   runApp(MaterialApp(
     title: "App",
@@ -30,10 +30,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> initIterable() async {
-    final apiKey = FlutterConfig.get('ITERABLE_API_KEY');
+    final apiKey = dotenv.env['ITERABLE_API_KEY'] ?? '';
     final pushIntegrationName = Platform.isAndroid
-        ? FlutterConfig.get('ITERABLE_PUSH_INTEGRATION_NAME_ANDROID')
-        : FlutterConfig.get('ITERABLE_PUSH_INTEGRATION_NAME_IOS');
+        ? dotenv.env['ITERABLE_PUSH_INTEGRATION_NAME_ANDROID'] ?? ''
+        : dotenv.env['ITERABLE_PUSH_INTEGRATION_NAME_IOS'] ?? '';
 
     return await IterableFlutter.initialize(
       apiKey: apiKey,
