@@ -1,3 +1,6 @@
+## Unreleased
+- docs: repoint the remaining upstream metadata at this fork — `pubspec.yaml` `homepage` (was `https://lahaus.com`) and the podspec `s.author` (was `La Haus <email@example.com>`, a placeholder address). Metadata only; no version bump, since consumers pin by git ref. The `com.lahaus.iterable_flutter` Android namespace/group and the `package:` in `pubspec.yaml` are deliberately unchanged — renaming those would break plugin registration for every consumer.
+
 ## 0.8.1
 - build(android): stop unconditionally applying the Kotlin Gradle Plugin. `kotlin-android` is now applied only when the consuming app's AGP major version is below 9; on AGP 9 and later, AGP's built-in Kotlin applies it and a second application fails the build. `android.kotlinOptions` is replaced by a `kotlin { compilerOptions { … } }` block scoped to the same legacy branch, because AGP 9 derives the Kotlin jvmTarget from `android.compileOptions` and registers no top-level `kotlin { }` extension at that point.
   **Consumers on AGP 9 can now drop the `android.builtInKotlin=false` and `android.newDsl=false` opt-outs** that Flutter's migrator added to `android/gradle.properties`. Consumers still on AGP 8 need no changes — that path is unaffected.

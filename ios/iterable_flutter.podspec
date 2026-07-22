@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
                        DESC
   s.homepage         = 'https://github.com/SpringCare/iterable_flutter'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'La Haus' => 'email@example.com' }
+  s.author           = 'Spring Health'
   s.source           = { :path => '.' }
   s.source_files = 'iterable_flutter/Sources/iterable_flutter/**/*'
   s.dependency 'Flutter'

@@ -5,7 +5,7 @@ version: 0.8.1
 # pub.dev — the `iterable_flutter` name there belongs to the upstream la-haus
 # project. `publish_to: none` makes an accidental publication impossible.
 publish_to: none
-homepage: https://lahaus.com
+homepage: https://github.com/SpringCare/iterable_flutter
 repository: https://github.com/SpringCare/iterable_flutter
 issue_tracker: https://github.com/SpringCare/iterable_flutter/issues
 documentation: https://github.com/SpringCare/iterable_flutter#readme
