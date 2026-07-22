@@ -1,5 +1,5 @@
 group 'com.lahaus.iterable_flutter'
-version '0.8.0'
+version '0.8.1'
 
 buildscript {
     ext.kotlin_version = '1.9.20'
@@ -22,7 +22,25 @@ rootProject.allprojects {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+
+// AGP 9 applies Kotlin itself ("built-in Kotlin"). Applying the Kotlin Gradle
+// Plugin on top of that double-applies Kotlin and fails the build, so only apply
+// it on AGP 8 and earlier where it is still required. This keeps the plugin
+// building for consumers on either side of the AGP 9 boundary.
+// See https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin
+def agpMajor = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0] as int
+if (agpMajor < 9) {
+    apply plugin: 'kotlin-android'
+
+    // Only needed on the legacy path. AGP 9's built-in Kotlin derives the Kotlin
+    // jvmTarget from `android.compileOptions` on its own, and does not register a
+    // top-level `kotlin { }` extension for us to configure here.
+    kotlin {
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
+        }
+    }
+}
 
 android {
     if (project.hasProperty("android") && project.android.hasProperty("namespace")) {
@@ -32,10 +50,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
     }
 
     sourceSets {
