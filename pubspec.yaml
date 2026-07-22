@@ -1,6 +1,6 @@
 name: iterable_flutter
 description: Flutter implementation for iterable.com Cross Channel Marketing Platform
-version: 0.8.0
+version: 0.8.1
 # This fork is consumed as a git dependency and is deliberately NOT published to
 # pub.dev — the `iterable_flutter` name there belongs to the upstream la-haus
 # project. `publish_to: none` makes an accidental publication impossible.
