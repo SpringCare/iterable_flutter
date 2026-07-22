@@ -1,3 +1,7 @@
+## Unreleased
+- chore: repository renamed `iterable-flutter` → `iterable_flutter`, satisfying the SPM identity prerequisite noted under 0.8.0. Consumers **must** update `git: url:` to `https://github.com/SpringCare/iterable_flutter.git`. The old URL still redirects and keeps CocoaPods builds working, but pub derives its cache directory name from the URL as written, so an un-updated URL still breaks SPM resolution.
+- chore: default branch renamed `master` → `main`.
+
 ## 0.8.0
 - feat: add Swift Package Manager support alongside CocoaPods. NB: for SPM identity resolution to work, the plugin repository must be named `iterable_flutter` (underscore) to match the Dart package name.
 - chore: bump Iterable iOS SDK 6.6.4 → 6.7.3 and Iterable Android SDK 3.6.3 → 3.9.0
