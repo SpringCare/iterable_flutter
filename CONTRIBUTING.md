@@ -1,7 +1,7 @@
 # Deploys 
 Each version will be described on:
-- [Github Releases](https://github.com/la-haus/iterable-flutter/releases)
-- [CHANGELOG.md](https://github.com/la-haus/iterable-flutter/blob/master/CHANGELOG.md)
+- [Github Releases](https://github.com/SpringCare/iterable_flutter/releases)
+- [CHANGELOG.md](https://github.com/SpringCare/iterable_flutter/blob/main/CHANGELOG.md)
 
 ## How to
 ```mermaid

@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
   Flutter implementation for iterable.com Cross Channel Marketing Platform
                        DESC
-  s.homepage         = 'https://github.com/la-haus/iterable-flutter'
+  s.homepage         = 'https://github.com/SpringCare/iterable_flutter'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'La Haus' => 'email@example.com' }
   s.source           = { :path => '.' }

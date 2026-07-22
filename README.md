@@ -33,8 +33,8 @@ To use this plugin, add `iterable_flutter` as a [dependency in your pubspec.yaml
 ```yaml
 iterable_flutter:
   git:
-  url: https://github.com/mabidakun/iterable-flutter.git
-  ref: 0.6.0-MA-SH
+    url: https://github.com/SpringCare/iterable_flutter.git
+    ref: 0.8.0
 ```
 
 2. Use `IterableFlutter.initialize` to set your iterable keys.
