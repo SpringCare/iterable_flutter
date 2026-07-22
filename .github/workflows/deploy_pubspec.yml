@@ -1,35 +1,38 @@
-name: Publish Package
+# This fork is NOT published to pub.dev — the `iterable_flutter` name there
+# belongs to the upstream la-haus project, and `pubspec.yaml` carries
+# `publish_to: none`. Consumers depend on this package by git ref instead.
+#
+# What remains is a packaging sanity check: on every published release, verify
+# the package would still package cleanly (no missing files, no malformed
+# pubspec, no oversized bundle). It never publishes anything.
+
+name: Package Validation
 
 on:
   release:
     types: [published]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}-package-validation
+  cancel-in-progress: true
 
 jobs:
-  build:
+  validate:
+    name: Validate package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '2.8.1'
+          flutter-version: '3.44.6'
           channel: 'stable'
           cache: true
           cache-key: flutter # optional, change this to force refresh cache
           cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
+
       - name: Install dependencies
-        run: pub get
+        run: flutter pub get
 
-      - name: Prepare Env
-        shell: bash
-        env:
-          PUB_DEV_PUBLISH_ACCESS_TOKEN: ${{ secrets.PUB_DEV_PUBLISH_ACCESS_TOKEN }}
-          PUB_DEV_PUBLISH_REFRESH_TOKEN: ${{ secrets.PUB_DEV_PUBLISH_REFRESH_TOKEN }}
-          PUB_DEV_PUBLISH_TOKEN_ENDPOINT: ${{ secrets.PUB_DEV_PUBLISH_TOKEN_ENDPOINT }}
-          PUB_DEV_PUBLISH_EXPIRATION: ${{ secrets.PUB_DEV_PUBLISH_EXPIRATION }}
-        run: |
-          sh ./prepare_deploy_env.sh
-
-      - name: Check Publish Warnings
-        run: pub publish --dry-run
-      - name: Publish Package
-        run: pub publish -f
+      - name: Validate packaging (never publishes)
+        run: flutter pub publish --dry-run
