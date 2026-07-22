@@ -22,7 +22,8 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
       calledMethod.add(methodCall);
 
       switch (methodCall.method) {
@@ -50,7 +51,8 @@ void main() {
 
   tearDown(() {
     calledMethod.clear();
-    channel.setMockMethodCallHandler(null);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, null);
   });
 
   test('initialize', () async {
@@ -132,7 +134,9 @@ void main() {
       pushData = openedResultMap;
     });
 
-    await ServicesBinding.instance.defaultBinaryMessenger.handlePlatformMessage(
+    await TestDefaultBinaryMessengerBinding
+        .instance.defaultBinaryMessenger
+        .handlePlatformMessage(
         'iterable_flutter',
         const StandardMethodCodec().encodeMethodCall(
           const MethodCall(
